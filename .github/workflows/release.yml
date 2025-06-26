@@ -1,0 +1,46 @@
+name: Create Extension Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Get version from tag
+      id: get_version
+      run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+    
+    - name: Build extension
+      run: |
+        chmod +x build.sh
+        ./build.sh
+    
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: ArXiv to Blog Extension v${{ steps.get_version.outputs.VERSION }}
+        body: |
+          ## 🚀 ArXiv to Blog Extension v${{ steps.get_version.outputs.VERSION }}
+        draft: false
+        prerelease: false
+    
+    - name: Upload Release Asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: dist/arxiv-to-alphaxiv-v${{ steps.get_version.outputs.VERSION }}.zip
+        asset_name: arxiv-to-blog-extension-v${{ steps.get_version.outputs.VERSION }}.zip
+        asset_content_type: application/zip

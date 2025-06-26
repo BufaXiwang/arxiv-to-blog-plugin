@@ -7,7 +7,7 @@ function loadSettings() {
     chrome.storage.sync.get({
         defaultLanguage: 'en',
         showFloatingButton: true,
-        openInNewTab: true
+        openInNewTab: false
     }, function(items) {
         document.getElementById('defaultLanguage').value = items.defaultLanguage;
         document.getElementById('showFloatingButton').checked = items.showFloatingButton;

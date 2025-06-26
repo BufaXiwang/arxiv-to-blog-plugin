@@ -21,7 +21,7 @@
         button.innerHTML = `
             <div class="alphaxiv-btn-content">
                 <span class="alphaxiv-icon">📚</span>
-                <span class="alphaxiv-text">View on AlphaXiv</span>
+                <span class="alphaxiv-text">Go to Blog</span>
             </div>
         `;
         

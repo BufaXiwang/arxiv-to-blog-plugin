@@ -37,3 +37,9 @@ build/
 # Temporary files
 *.tmp
 *.temp 
+# Build directories
+build/
+dist/
+
+# Backup files
+*.backup
