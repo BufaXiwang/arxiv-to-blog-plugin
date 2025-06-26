@@ -79,8 +79,8 @@ main() {
     
     # Build the extension
     echo -e "${YELLOW}🔨 Building extension...${NC}"
-    if [[ -f "build.sh" ]]; then
-        ./build.sh
+    if [[ -f "./scripts/build.sh" ]]; then
+        ./scripts/build.sh
     else
         echo -e "${RED}❌ build.sh not found. Please run this script from the project root.${NC}"
         exit 1
