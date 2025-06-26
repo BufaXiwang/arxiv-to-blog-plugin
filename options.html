@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ArXiv to AlphaXiv - Settings</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .logo {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        
+        h1 {
+            color: #2d3748;
+            margin: 0 0 10px 0;
+            font-size: 28px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            color: #718096;
+            font-size: 16px;
+            margin: 0;
+        }
+        
+        .section {
+            margin-bottom: 32px;
+            padding: 24px;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            background: #f8fafc;
+        }
+        
+        .section h2 {
+            color: #2d3748;
+            margin: 0 0 16px 0;
+            font-size: 20px;
+            font-weight: 600;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #4a5568;
+            font-weight: 500;
+        }
+        
+        select, input[type="checkbox"] {
+            padding: 12px 16px;
+            border: 1px solid #cbd5e0;
+            border-radius: 8px;
+            font-size: 14px;
+            background: white;
+            transition: border-color 0.2s ease;
+        }
+        
+        select {
+            width: 100%;
+            max-width: 300px;
+        }
+        
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin: 0;
+        }
+        
+        .save-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .save-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .save-btn:active {
+            transform: translateY(0);
+        }
+        
+        .success-message {
+            background: #48bb78;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            margin-top: 16px;
+            display: none;
+            text-align: center;
+            font-weight: 500;
+        }
+        
+        .description {
+            color: #718096;
+            font-size: 14px;
+            margin-top: 8px;
+            line-height: 1.5;
+        }
+        
+        .language-preview {
+            margin-top: 16px;
+            padding: 16px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .preview-title {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 8px;
+        }
+        
+        .preview-url {
+            font-family: monospace;
+            color: #667eea;
+            word-break: break-all;
+            background: #f7fafc;
+            padding: 8px 12px;
+            border-radius: 6px;
+            border: 1px solid #e2e8f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">📚</div>
+            <h1>ArXiv to AlphaXiv</h1>
+            <p class="subtitle">Extension Settings</p>
+        </div>
+        
+        <div class="section">
+            <h2>🌐 Language Settings</h2>
+            <div class="form-group">
+                <label for="defaultLanguage">Default Language:</label>
+                <select id="defaultLanguage">
+                    <option value="en">English</option>
+                    <option value="zh">中文 (Chinese)</option>
+                    <option value="ja">日本語 (Japanese)</option>
+                    <option value="ko">한국어 (Korean)</option>
+                </select>
+                <p class="description">
+                    Choose your preferred language for AlphaXiv. This will be used as the default when redirecting from arXiv papers.
+                </p>
+                
+                <div class="language-preview">
+                    <div class="preview-title">Preview URL format:</div>
+                    <div class="preview-url" id="previewUrl">
+                        https://www.alphaxiv.org/overview/[paper-id]
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>🎨 Interface Settings</h2>
+            <div class="form-group">
+                <div class="checkbox-group">
+                    <input type="checkbox" id="showFloatingButton" checked>
+                    <label for="showFloatingButton">Show floating button on arXiv pages</label>
+                </div>
+                <p class="description">
+                    Display a floating button on arXiv paper pages for quick access to AlphaXiv.
+                </p>
+            </div>
+            
+            <div class="form-group">
+                <div class="checkbox-group">
+                    <input type="checkbox" id="openInNewTab" checked>
+                    <label for="openInNewTab">Open AlphaXiv in new tab</label>
+                </div>
+                <p class="description">
+                    When enabled, AlphaXiv will open in a new tab. Otherwise, it will replace the current tab.
+                </p>
+            </div>
+        </div>
+        
+        <button id="saveBtn" class="save-btn">💾 Save Settings</button>
+        <div id="successMessage" class="success-message">
+            ✅ Settings saved successfully!
+        </div>
+    </div>
+    
+    <script src="options.js"></script>
+</body>
+</html> 

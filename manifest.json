@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "ArXiv to AlphaXiv Redirector",
+  "version": "1.0.0",
+  "description": "Easily redirect from arXiv papers to AlphaXiv for enhanced reading experience with multiple language support",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://arxiv.org/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "ArXiv to AlphaXiv"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://arxiv.org/abs/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "options_page": "options.html",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+} 
