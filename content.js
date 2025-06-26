@@ -133,8 +133,9 @@
     function extractPaperId(url) {
         // Support both /abs/ and /pdf/ URLs
         const absMatch = url.match(/arxiv\.org\/abs\/(.+?)($|\?|#)/);
-        const pdfMatch = url.match(/arxiv\.org\/pdf\/(.+?)\.pdf($|\?|#)/);
-        
+        const pdfMatch = url.match(/arxiv\.org\/pdf\/(.+?)($|\?|#)/);
+
+
         if (absMatch) {
             return absMatch[1];
         } else if (pdfMatch) {
