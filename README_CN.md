@@ -99,55 +99,27 @@ arxiv-to-blog-plugin/
 ├── 📜 content.js             # arXiv页面的内容脚本
 ├── 🎨 icons/                 # 扩展程序图标
 ├── 🔧 build.sh               # 构建脚本
-├── 🚀 release.sh             # 自动化发布脚本
 ├── 📋 .github/workflows/     # GitHub Actions CI/CD
 ├── 📖 README.md              # 英文文档
 ├── 📖 README_CN.md           # 中文文档
 └── 🚀 QUICK_START.md         # 快速开始指南
 ```
 
-### 从源码构建
-```bash
-# 克隆仓库
-git clone https://github.com/your-username/arxiv-to-blog-plugin.git
-cd arxiv-to-blog-plugin
-
-# 使构建脚本可执行
-chmod +x build.sh
-
-# 构建扩展
-./build.sh
-
-# 构建的扩展将在build/目录中
-# 构建的包将在dist/目录中
-```
-
-### 开发工作流程
-1. 对源文件进行修改
-2. 通过在Chrome开发者模式下加载扩展进行本地测试
-3. 运行 `./build.sh` 创建分发包
-4. 使用 `./release.sh [版本] [说明]` 创建GitHub发布
-
-## 📦 版本管理
-
-### 快速发布
-```bash
-# 发布新版本（自动更新版本、构建和发布）
-./release.sh 1.0.1 "错误修复和改进"
-```
 
 ### 手动构建
 ```bash
+# 克隆到本地
+git clone https://github.com/your-username/arxiv-to-blog-plugin.git
+cd arxiv-to-blog-plugin
+
+# 添加执行脚本的权限
+chmod +x build.sh
+
 # 仅构建扩展包
 ./build.sh
 
 # 输出：dist/arxiv-to-alphaxiv-v[版本].zip
 ```
-
-项目包含自动化的GitHub Actions，将会：
-- 🏗️ 当您推送版本标签时构建扩展
-- 📦 自动创建GitHub Release
-- 📎 上传构建的ZIP文件作为发布资产
 
 ## 📝 使用示例
 
@@ -166,55 +138,10 @@ https://arxiv.org/abs/2301.00001
 
 我们欢迎贡献！请随时提交Pull Request。对于重大更改，请先开启issue讨论您想要改变的内容。
 
-### 如何贡献：
-1. Fork本仓库
-2. 创建您的功能分支（`git checkout -b feature/AmazingFeature`）
-3. 充分测试您的更改
-4. 运行构建脚本确保一切正常
-5. 提交您的更改（`git commit -m 'Add some AmazingFeature'`）
-6. 推送到分支（`git push origin feature/AmazingFeature`）
-7. 开启Pull Request
-
-### 开发指南：
-- 遵循现有的代码风格
-- 在多个arXiv页面上进行测试
-- 确保扩展在弹窗和浮动按钮模式下都能正常工作
-- 如有需要请更新文档
 
 ## 📄 许可证
 
 本项目采用MIT许可证 - 查看[LICENSE](LICENSE)文件了解详情。
-
-## 🙏 致谢
-
-- 感谢arXiv团队提供开放获取的科学论文
-- 感谢AlphaXiv团队创造增强的阅读体验
-- 受到无缝连接学术平台需求的启发
-
-## 📞 支持
-
-如果您遇到任何问题或有建议：
-- 🐛 [报告bug](https://github.com/your-username/arxiv-to-blog-plugin/issues)
-- 💡 [请求功能](https://github.com/your-username/arxiv-to-blog-plugin/issues)
-- 📧 [联系我们](mailto:your-email@example.com)
-
-## 🔮 发展路线图
-
-- [ ] 支持更多语言
-- [ ] 键盘快捷键
-- [ ] 自定义URL模式
-- [ ] 与参考文献管理器集成
-- [ ] 深色模式支持
-- [ ] Chrome网上应用店发布
-- [ ] Firefox扩展移植
-
-## 📊 项目统计
-
-- **扩展大小**：约20KB
-- **加载时间**：<100毫秒
-- **支持语言**：4种
-- **Chrome清单**：版本3
-- **权限**：最小化（activeTab, storage）
 
 ---
 

@@ -99,7 +99,6 @@ arxiv-to-blog-plugin/
 ├── 📜 content.js             # Content script for arXiv pages
 ├── 🎨 icons/                 # Extension icons
 ├── 🔧 build.sh               # Build script
-├── �� release.sh             # Automated release script
 ├── 📋 .github/workflows/     # GitHub Actions for CI/CD
 ├── 📖 README.md              # English documentation
 ├── 📖 README_CN.md           # Chinese documentation
@@ -121,33 +120,6 @@ chmod +x build.sh
 # Built package will be in the dist/ directory
 ```
 
-### Development Workflow
-1. Make your changes to the source files
-2. Test locally by loading the extension in Chrome developer mode
-3. Run `./build.sh` to create a distribution package
-4. Use `./release.sh [version] [notes]` to create a GitHub release
-
-## 📦 Release Management
-
-### Quick Release
-```bash
-# Release a new version (automatically updates version, builds, and publishes)
-./release.sh 1.0.1 "Bug fixes and improvements"
-```
-
-### Manual Build
-```bash
-# Just build the extension package
-./build.sh
-
-# Output: dist/arxiv-to-alphaxiv-v[version].zip
-```
-
-The project includes automated GitHub Actions that will:
-- 🏗️ Build the extension when you push a version tag
-- 📦 Create a GitHub Release automatically
-- 📎 Upload the built ZIP file as a release asset
-
 ## 📝 Example Usage
 
 **Original arXiv URL:**
@@ -165,55 +137,11 @@ https://arxiv.org/abs/2301.00001
 
 We welcome contributions! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
 
-### How to Contribute:
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Test your changes thoroughly
-4. Run the build script to ensure everything works
-5. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-6. Push to the branch (`git push origin feature/AmazingFeature`)
-7. Open a Pull Request
-
-### Development Guidelines:
-- Follow the existing code style
-- Test on multiple arXiv pages
-- Ensure the extension works in both popup and floating button modes
-- Update documentation if needed
 
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
-
-- Thanks to the arXiv team for providing open access to scientific papers
-- Thanks to the AlphaXiv team for creating an enhanced reading experience
-- Inspired by the need to bridge academic platforms seamlessly
-
-## 📞 Support
-
-If you encounter any issues or have suggestions:
-- 🐛 [Report bugs](https://github.com/your-username/arxiv-to-blog-plugin/issues)
-- 💡 [Request features](https://github.com/your-username/arxiv-to-blog-plugin/issues)
-- 📧 [Contact us](mailto:your-email@example.com)
-
-## 🔮 Roadmap
-
-- [ ] Support for more languages
-- [ ] Keyboard shortcuts
-- [ ] Custom URL patterns
-- [ ] Integration with reference managers
-- [ ] Dark mode support
-- [ ] Chrome Web Store publication
-- [ ] Firefox extension port
-
-## 📊 Project Stats
-
-- **Extension Size**: ~20KB
-- **Load Time**: <100ms
-- **Supported Languages**: 4
-- **Chrome Manifest**: Version 3
-- **Permissions**: Minimal (activeTab, storage)
 
 ---
 

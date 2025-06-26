@@ -1,8 +1,8 @@
 {
-  "manifest_version": 3,
-  "name": "ArXiv to AlphaXiv Redirector",
+  "manifest_version": 4,
+  "name": "ArXiv to Blog",
   "version": "1.0.0",
-  "description": "Easily redirect from arXiv papers to AlphaXiv for enhanced reading experience with multiple language support",
+  "description": "Easily redirect from arXiv papers to Blog for enhanced reading experience",
   "permissions": [
     "activeTab",
     "storage"
@@ -12,7 +12,7 @@
   ],
   "action": {
     "default_popup": "popup.html",
-    "default_title": "ArXiv to AlphaXiv"
+    "default_title": "ArXiv to Blog"
   },
   "content_scripts": [
     {
