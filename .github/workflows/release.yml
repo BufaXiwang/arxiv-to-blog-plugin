@@ -9,6 +9,9 @@ jobs:
   build-and-release:
     runs-on: ubuntu-latest
     
+    permissions:
+      contents: write
+    
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -23,24 +26,15 @@ jobs:
         ./build.sh
     
     - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      uses: softprops/action-gh-release@v1
       with:
-        tag_name: ${{ github.ref }}
-        release_name: ArXiv to Blog Extension v${{ steps.get_version.outputs.VERSION }}
+        tag_name: ${{ github.ref_name }}
+        name: ArXiv to Blog Extension v${{ steps.get_version.outputs.VERSION }}
         body: |
           ## 🚀 ArXiv to Blog Extension v${{ steps.get_version.outputs.VERSION }}
+        files: |
+          dist/arxiv-to-alphaxiv-v${{ steps.get_version.outputs.VERSION }}.zip
         draft: false
         prerelease: false
-    
-    - name: Upload Release Asset
-      uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: dist/arxiv-to-alphaxiv-v${{ steps.get_version.outputs.VERSION }}.zip
-        asset_name: arxiv-to-blog-extension-v${{ steps.get_version.outputs.VERSION }}.zip
-        asset_content_type: application/zip
