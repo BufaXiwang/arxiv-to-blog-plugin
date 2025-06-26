@@ -12,7 +12,7 @@ YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
-echo -e "${BLUE}🚀 Building ArXiv to AlphaXiv Chrome Extension...${NC}"
+echo -e "${BLUE}🚀 Building ArXiv to Blog Chrome Extension...${NC}"
 
 # Get version from manifest.json
 VERSION=$(grep '"version"' manifest.json | sed 's/.*"version": "\(.*\)".*/\1/')
@@ -48,7 +48,7 @@ echo -e "${YELLOW}🗂️  Files included in package:${NC}"
 ls -la ${BUILD_DIR}/
 
 # Create ZIP file
-ZIP_NAME="arxiv-to-alphaxiv-v${VERSION}.zip"
+ZIP_NAME="arxiv-to-blog-v${VERSION}.zip"
 cd ${BUILD_DIR}
 zip -r "../${DIST_DIR}/${ZIP_NAME}" .
 cd ..

@@ -13,7 +13,7 @@ You can create simple icons using any image editing software or online tools:
 
 1. **Design Requirements:**
    - Use a book/document theme (📚 or similar)
-   - Include ArXiv → AlphaXiv visual elements
+   - Include ArXiv → Blog visual elements
    - Keep it simple and recognizable at small sizes
    - Use consistent branding colors
 

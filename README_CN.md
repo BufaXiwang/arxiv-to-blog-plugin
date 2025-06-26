@@ -50,7 +50,7 @@ cd arxiv-to-blog-plugin
 ## 🎯 使用方法
 
 ### 方法1：扩展程序弹窗
-1. 导航到任何arXiv论文（例如：`https://arxiv.org/abs/2301.00001`）
+1. 导航到任何arXiv论文（例如：`https://arxiv.org/abs/2301.00001` 或 `https://arxiv.org/pdf/2301.00001.pdf`）
 2. 点击Chrome工具栏中的扩展程序图标
 3. 直接在弹窗中配置设置：
    - 选择您的首选语言
@@ -59,7 +59,7 @@ cd arxiv-to-blog-plugin
 4. 点击"🚀 前往博客"
 
 ### 方法2：浮动按钮
-1. 导航到任何arXiv论文
+1. 导航到任何arXiv论文（支持摘要页面和PDF页面）
 2. 查找右上角的浮动"📚 前往博客"按钮
 3. 点击按钮即可立即重定向（使用您保存的语言偏好）
 
@@ -123,9 +123,10 @@ chmod +x build.sh
 
 ## 📝 使用示例
 
-**原始arXiv URL：**
+**原始arXiv URL（支持摘要和PDF页面）：**
 ```
 https://arxiv.org/abs/2301.00001
+https://arxiv.org/pdf/2301.00001.pdf
 ```
 
 **重定向后的AlphaXiv URLs：**

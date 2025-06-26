@@ -2,8 +2,8 @@ document.addEventListener('DOMContentLoaded', async function() {
     // Get current tab
     const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
     
-    // Check if current URL is arXiv
-    const isArxivPage = tab.url && tab.url.includes('arxiv.org/abs/');
+    // Check if current URL is arXiv (both abs and pdf pages)
+    const isArxivPage = tab.url && (tab.url.includes('arxiv.org/abs/') || tab.url.includes('arxiv.org/pdf/'));
     
     if (isArxivPage) {
         showArxivContent(tab.url);
@@ -33,8 +33,17 @@ function showNotArxivContent() {
 }
 
 function extractPaperId(url) {
-    const match = url.match(/arxiv\.org\/abs\/(.+?)($|\?|#)/);
-    return match ? match[1] : '';
+    // Support both /abs/ and /pdf/ URLs
+    const absMatch = url.match(/arxiv\.org\/abs\/(.+?)($|\?|#)/);
+    const pdfMatch = url.match(/arxiv\.org\/pdf\/(.+?)\.pdf($|\?|#)/);
+    
+    if (absMatch) {
+        return absMatch[1];
+    } else if (pdfMatch) {
+        return pdfMatch[1];
+    }
+    
+    return '';
 }
 
 async function loadLanguagePreference() {

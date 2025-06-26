@@ -33,7 +33,7 @@ jobs:
         body: |
           ## 🚀 ArXiv to Blog Extension v${{ steps.get_version.outputs.VERSION }}
         files: |
-          dist/arxiv-to-alphaxiv-v${{ steps.get_version.outputs.VERSION }}.zip
+          dist/arxiv-to-blog-v${{ steps.get_version.outputs.VERSION }}.zip
         draft: false
         prerelease: false
       env:

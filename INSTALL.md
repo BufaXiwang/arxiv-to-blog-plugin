@@ -46,7 +46,7 @@ Before loading the extension, you need to add icon files to the `icons/` directo
 
 3. **Expected Behavior:**
    - Popup shows paper ID and language options
-   - Clicking "Go to AlphaXiv" opens the corresponding AlphaXiv page
+   - Clicking "Go to Blog" opens the corresponding AlphaXiv page
    - Floating button provides one-click access
 
 ## Testing Different Features

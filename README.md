@@ -50,7 +50,7 @@ cd arxiv-to-blog-plugin
 ## 🎯 How to Use
 
 ### Method 1: Extension Popup
-1. Navigate to any arXiv paper (e.g., `https://arxiv.org/abs/2301.00001`)
+1. Navigate to any arXiv paper (e.g., `https://arxiv.org/abs/2301.00001` or `https://arxiv.org/pdf/2301.00001.pdf`)
 2. Click the extension icon in your Chrome toolbar
 3. Configure settings directly in the popup:
    - Select your preferred language
@@ -59,7 +59,7 @@ cd arxiv-to-blog-plugin
 4. Click "🚀 Go to Blog"
 
 ### Method 2: Floating Button
-1. Navigate to any arXiv paper
+1. Navigate to any arXiv paper (supports both abstract and PDF pages)
 2. Look for the floating "📚 Go to Blog" button in the top-right corner
 3. Click the button to instantly redirect (uses your saved language preference)
 
@@ -122,9 +122,10 @@ chmod +x build.sh
 
 ## 📝 Example Usage
 
-**Original arXiv URL:**
+**Original arXiv URLs (supports both abstract and PDF pages):**
 ```
 https://arxiv.org/abs/2301.00001
+https://arxiv.org/pdf/2301.00001.pdf
 ```
 
 **Redirected AlphaXiv URLs:**

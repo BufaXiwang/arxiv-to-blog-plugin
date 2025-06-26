@@ -2,8 +2,8 @@
 (function() {
     'use strict';
     
-    // Only run on arXiv abstract pages
-    if (!window.location.href.includes('arxiv.org/abs/')) {
+    // Only run on arXiv abstract or PDF pages
+    if (!window.location.href.includes('arxiv.org/abs/') && !window.location.href.includes('arxiv.org/pdf/')) {
         return;
     }
     
@@ -131,8 +131,17 @@
     }
     
     function extractPaperId(url) {
-        const match = url.match(/arxiv\.org\/abs\/(.+?)($|\?|#)/);
-        return match ? match[1] : '';
+        // Support both /abs/ and /pdf/ URLs
+        const absMatch = url.match(/arxiv\.org\/abs\/(.+?)($|\?|#)/);
+        const pdfMatch = url.match(/arxiv\.org\/pdf\/(.+?)\.pdf($|\?|#)/);
+        
+        if (absMatch) {
+            return absMatch[1];
+        } else if (pdfMatch) {
+            return pdfMatch[1];
+        }
+        
+        return '';
     }
     
     function buildAlphaxivUrl(paperId, language) {
