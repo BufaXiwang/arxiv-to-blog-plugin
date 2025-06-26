@@ -35,7 +35,7 @@ function showNotArxivContent() {
 function extractPaperId(url) {
     // Support both /abs/ and /pdf/ URLs
     const absMatch = url.match(/arxiv\.org\/abs\/(.+?)($|\?|#)/);
-    const pdfMatch = url.match(/arxiv\.org\/pdf\/(.+?)\.pdf($|\?|#)/);
+    const pdfMatch = url.match(/arxiv\.org\/pdf\/(.+?)($|\?|#)/);
     
     if (absMatch) {
         return absMatch[1];
@@ -50,35 +50,51 @@ async function loadLanguagePreference() {
     try {
         const result = await chrome.storage.sync.get(['defaultLanguage']);
         const defaultLanguage = result.defaultLanguage || 'en';
-        document.getElementById('language').value = defaultLanguage;
+        const languageSelect = document.getElementById('language');
+        if (languageSelect) {
+            languageSelect.value = defaultLanguage;
+        }
     } catch (error) {
         console.error('Error loading language preference:', error);
-        document.getElementById('language').value = 'en';
+        const languageSelect = document.getElementById('language');
+        if (languageSelect) {
+            languageSelect.value = 'en';
+        }
     }
 }
 
 function setupEventListeners() {
     // Redirect button
-    document.getElementById('redirect-btn').addEventListener('click', handleRedirect);
+    const redirectBtn = document.getElementById('redirect-btn');
+    if (redirectBtn) {
+        redirectBtn.addEventListener('click', handleRedirect);
+    }
     
     // Language selector
-    document.getElementById('language').addEventListener('change', saveLanguagePreference);
+    const languageSelect = document.getElementById('language');
+    if (languageSelect) {
+        languageSelect.addEventListener('change', saveLanguagePreference);
+    }
     
     // Options link
-    document.getElementById('options-link').addEventListener('click', function(e) {
-        e.preventDefault();
-        chrome.runtime.openOptionsPage();
-    });
+    const optionsLink = document.getElementById('options-link');
+    if (optionsLink) {
+        optionsLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            chrome.runtime.openOptionsPage();
+        });
+    }
 }
 
 async function handleRedirect() {
     try {
         const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
         const paperId = extractPaperId(tab.url);
-        const language = document.getElementById('language').value;
+        const languageSelect = document.getElementById('language');
+        const language = languageSelect ? languageSelect.value : 'en';
         
         if (!paperId) {
-            console.error('Could not extract paper ID');
+            console.error('Could not extract paper ID from URL:', tab.url);
             return;
         }
         
@@ -117,7 +133,13 @@ function buildAlphaxivUrl(paperId, language) {
 
 async function saveLanguagePreference() {
     try {
-        const language = document.getElementById('language').value;
+        const languageSelect = document.getElementById('language');
+        if (!languageSelect) {
+            console.error('Language selector not found');
+            return;
+        }
+        
+        const language = languageSelect.value;
         await chrome.storage.sync.set({ defaultLanguage: language });
     } catch (error) {
         console.error('Error saving language preference:', error);

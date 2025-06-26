@@ -71,15 +71,19 @@ function updatePreviewUrl(language) {
 }
 
 function updateContentScripts(settings) {
-    // Send message to all tabs to update floating button visibility
-    chrome.tabs.query({url: "https://arxiv.org/abs/*"}, function(tabs) {
-        tabs.forEach(function(tab) {
-            chrome.tabs.sendMessage(tab.id, {
-                action: 'updateSettings',
-                settings: settings
-            }).catch(error => {
-                // Ignore errors for tabs that don't have the content script loaded
-                console.log('Could not send message to tab:', tab.id);
+    // Send message to all arXiv tabs (both abs and pdf) to update floating button visibility
+    const arxivUrls = ["https://arxiv.org/abs/*", "https://arxiv.org/pdf/*"];
+    
+    arxivUrls.forEach(url => {
+        chrome.tabs.query({url: url}, function(tabs) {
+            tabs.forEach(function(tab) {
+                chrome.tabs.sendMessage(tab.id, {
+                    action: 'updateSettings',
+                    settings: settings
+                }).catch(error => {
+                    // Ignore errors for tabs that don't have the content script loaded
+                    console.log('Could not send message to tab:', tab.id);
+                });
             });
         });
     });
